@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.armazem";
+option java_outer_classname = "ArmazemChaveProto";
+option objc_class_prefix = "ARZ";
+
+package armazem;
+
+service ArmazemChaveValor {
+    rpc Insercao(Chave_Valor) returns (Inteiro) {}
+
+    rpc Consulta(Chave) returns (Valor) {}
+
+    rpc Ativacao(Valor) returns (Inteiro) {}
+
+    rpc Termino(Param_Vazio) returns (Inteiro) {}
+}
+
+message Inteiro {
+    int32 v = 1;
+}
+
+message Chave {
+    uint64 chave = 1;
+}
+
+message Valor {
+    string valor = 1;
+}
+
+message Chave_Valor {
+    Chave chave_j = 1;
+    Valor valor_j = 2;
+}
+
+message Param_Vazio {}

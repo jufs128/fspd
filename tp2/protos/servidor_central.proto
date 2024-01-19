@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.central";
+option java_outer_classname = "CentralProto";
+option objc_class_prefix = "SVC";
+
+package servidor;
+
+service ServidorCentral {
+    rpc Registro(Id_Chave) returns (Inteiro) {}
+
+    rpc Mapeamento(Chave) returns (Identificador) {}
+
+    rpc Termino(Param_Vazio) returns (Inteiro) {}
+}
+
+message Identificador {
+    string str_id = 1;
+}
+
+message Chave {
+    uint64 chave = 1;
+}
+
+message Lista_Chaves {
+    repeated uint64 chave = 1;
+}
+
+message Id_Chave {
+    Identificador id = 1;
+    Lista_Chaves ch = 2;
+}
+
+message Inteiro {
+    int32 v = 1;
+}
+
+message Param_Vazio {}
